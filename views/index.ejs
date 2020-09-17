@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de cliente</title>
+</head>
+<body>
+    <h3>Prencha as informações abaixo para cadastrar um cliente: </h3>
+    <form method="POST" action="/form">
+      <b>Nome: </b>         <input type="text" name="nome" id="nome"><br>
+      <b>Email: </b>        <input type="email" name="email" id="email"><br>
+      <b>CPF/CNPJ:</b>      <input type="number" name="cpf" id="cpf"><br>
+      <b>Telefone: </b>     <input type="number" name="telefone" id="telefone"><br>
+      <b>CEP: </b>          <input type="number" name="cep" id="cep"><br>
+      <b>Logradouro: </b>   <input type="text" name="logradouro" id="logradouro"><br>
+      <b>Número: </b>       <input type="number" name="numero" id="numero"><br>
+      <b>Bairro: </b>       <input type="text" name="bairro" id="bairro"><br>
+      <b>Cidade: </b>       <input type="text" name="cidade" id="cidade"><br>
+      <b>Estado: </b>       <select id="estado" name="estado"><br>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+            <option value="EX">Estrangeiro</option>
+        </select>
+        <button type="submit">Enviar</button><br>
+    </form>
+    <hr>
+    <form action="">
+    <h3>Lista de clientes: </h3>
+    <% clientes.forEach(clientes => { %>
+        <b>Nome: </b>           <%= clientes.nome %> <br>
+        <b>Email: </b>          <%= clientes.email %> <br>
+        <b>CPF/CNPJ:</b>        <%= clientes.cpf %> <br>
+        <b>Telefone: </b>       <%= clientes.telefone %> <br>
+        <b>CEP: </b>            <%= clientes.cep %> <br>
+        <b>Logradouro: </b>     <%= clientes.logradouro %> <br>
+        <b>Número: </b>         <%= clientes.numero %> <br>
+        <b>Bairro: </b>         <%= clientes.bairro %> <br>
+        <b>Estado: </b>         <%= clientes.estado %> <br>
+    </form>
+        <form action="/delete" method="POST">
+            <input type="hidden" name="id" value="<%= clientes.id %>">
+            <button >Deletar cliente</button>
+        </form>
+        <hr>
+    <% }) %>
+</body>
+
+</html>
